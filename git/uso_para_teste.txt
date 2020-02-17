@@ -1,0 +1,59 @@
+Este arquivo esta sendo editado e usado em testes do curso de git e githuba para
+iniciantes.
+
+vamos aqui aprender comandos e saber trabalhar com a ferrament git local e remotamente.
+
+1. baixar e instalar o git.
+2. configurações no git...
+	comandos:
+	git config --global user.name "nome do usuario"
+		(esse comando altera o nome do usuario)
+	git config --global user.email "email do usuario"
+		(esse comando altera o email do usuario)
+	git config --list
+		(esse comando lista as configurações do git)
+	git config --global core.editor "nome do editor de texto desejado"
+		(comando altera editor de texto padrao)
+	
+	entre outros comando de configuração, esses são os mais basicos e principais.
+
+
+3. inicializando o git
+
+	Na hora de trabalhar com o git é preciso iniciar o git dentro da pasta/diretorio
+		e para isso temos o comando:
+	git init
+		(ira inicializar o git, e criar uma pasta git)
+
+4. conhecendo o ciclo de vida dos arquivos no git
+	1 untracked
+		Quando ainda não temos nada para mandar para versionamento
+	2 unmodified
+		quando vc apaga modificações.
+	3 modified
+		quando vc modifica um arquivo e precisa adicionar ao stage novamente para poder comitar.
+	4 staged
+		quando vc adiciona ao stage e esta prestes a comitar. enviar o arquivo para o master
+
+5. passos basicos para trabalhar com o git.
+	
+	1. para sabemos o que foi modificado e ainda não foi adicionado
+		git status
+			(será exibido nomes de arquivos e pastas em vermelho, esse que foram modificados)
+	1.1 quando tiver os arquivos prontos para mandar para stage...
+		git add .
+			(esse comando irá adicionar tudo, o ponto (.) diz tudo, ao stage.
+		git add "nome do arquvio
+			(nesse caso irá adicionar apenas o arquivo ao qual passou o nome)
+	2. para vermos o que foi adicionado ao stage
+		git status
+			(o que esta adicionado ficará em verde)
+	2.1 depois, precisamos commitar
+		git commit -m "mensagem"
+			(comando para enviar ao stage)
+		git commit am"mensagem"
+			(esse comando pula a parte do add)
+	3. agora vamos enviar ao nosso local de trabalho o que está pronto.
+		git origin master
+		( esse comando envia tudo para o repositorio. irá pedir nome de uruario e senha)
+		

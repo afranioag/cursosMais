@@ -1,0 +1,87 @@
+Arquivo para resumo do corso de banco de dados da udemy
+
+seção 1:
+	Instalação dos softwares.
+seção 2:
+	Primeiros comandos na linguagem MySql - 
+	para comentar o codigo /* */ entre esse conjunto de caracteres. Lembrar de abrir e fechar.
+	1 - passo, modelagem conceitual. Cria-se o rascunho do BD, dando nomes para as entidades, as relações, os atributos e tipos. 
+	2 - passo, modelagem logica com auxilio de algum software de modelagem criamos a logica do que foi feito no passo 1
+	3 - passo, modelagem fisica, finalmente vamos usar o sql para dar vida ao BD.
+	Um banco de dados é dividido em tabelas, colunas e linhas.
+	
+	No sql - devemos criar o BD e para isso temos o comando
+	CREATE DATABASE NOME_DO_BD; cria o banco de dados, caso ele ainda n exista
+	USE NOME_DO_BD; diz ao sql qual será o banco de dados usado.
+	CREATE TABLE NOME_DA_TABELA(ATRIBUTOS E TIPOS); quando quisermos criar uma tabela. Lembrar que os atribulos dentro da definição saõ separados por virgula
+	SHOW TABLES; mostra todas as tabelas criada até então
+	DESC NOME_DA_TABELA; irá nos mostrar a tabela passada e mostra todos os atributos e tipos
+	
+	Tipagem: VAR e VARCHAR.
+	Devemos saber que cada caracter do BD vale 1B, um byte ou 8 bits, 0000.0000
+	Então sabendo disso, devemos ter cuidado ao trabalhar com tipos. No momento que nomeamos um atributo e escolhemos o tipo dele, devemos saber se 
+	esse atributo terá tamanhos variaveis. Com isso podemos saber se o melhor é usar CHAR ou VARCHAR.
+	CHAR é um tipo de uso rapido, pois não varia o tamanho da memoria usada. A melhor dica de uso é quando temos certeza que o atributo que ele for
+	atribuido não irá variar nunca. Caso passemos ele como tipo de um nome e tamanho 10, se o usuario passar um nome de tamanho 4, ex anna, o restante
+	do tamanho será completado com espaços e ocupará esse espaço em memoria. Isso não é uma boa pratica. Mas para sexo onde temos as opções F ou M, ou 
+	para abreviação de estados onde temos duas letras SP, RJ, RN etc é uma otima maneira de uso.
+	VARCHAR é um pouco mais lento porém, o uso da memoria é feito de forma inteligente, caso digamos que ele terá espaço 10 e passemos um nome com 4,
+	ele irá apagar o restante e na memoria so fica o que foi usado.
+	
+	Tipos: ENUM, INT, FLOAT
+	ENUM funciona como uma caixa de opções, e essa opção está apenas dentro do MYSQL. Ele serve para dizermos que aquele atributo terá aquela quantidade de opções
+	FLOAT é o tipo que usamos para decimais, e quando vamos nomear passamos dois parametros, o primeiro diz o tamanho total e o segundo a quantidade de casas decimais.
+	INT é para valores inteiros. E ele terá uma quantidade de digitos limitados a 11 casas. 
+
+
+
+SEÇÃO 3:
+	INSERT INTO NOME_DA_TABELA VALUES(ATRIBUTOS seguindo a ordem); aqui estamos adicionando elementos ao nosso banco de dadoas
+	INSERT INTO NOME_DA_TABELA (NOMES DO ATRIBUTOS) VALUES(ATRIBUTOS na ordem que foi colocado antes do VALUES); 
+	INSERT INTO NOME_DA_TABELA VALUES(ATRIBUTOS),(ATRIBUTOS_OUTRA TABELA),...(QUANTAS QUISER);
+			Podemos usar a palavra NULL ao informar um atributo da tabela, caso ainda não tenhamos dado para esse atributo.
+	SELECT comando muito importante no sql. Serve para pegar, mostrar qualquer coisa no BD. Vamos ver suas variantes:
+	SELECT NOW(); //ainda falta colocar o que faz
+	SELECT NOME, IDADE, ... CPF FROM PESSOA; estamos dizendo, selecione os atributos nome, idade, quantos quisermos e cpf da tabela PESSOA. 
+			Isso irá mostrar todas as tabelas pessoa apenas com esses atributos selecionados.
+	ALIAS serve para dar apelidos a tabelas, atributos.
+	SELECT NOME_TABELA AS APELIDO; AS é abreviação de ALIAS
+	Filtros - Para filtrar usamos a clausula WHERE.
+	Ex de uso: SELECT NOME, SEXO FROM PESSOA WHERE SEXO ='F'; "" ME MOSTRE O NOME E O SEXO NA TABELA PESSOA "ONDE" O SEXO SEJA 'F'. FEMININO.
+
+	Podemos filtrar sempre mais um pouco, quando temos um texto e queremos selecionar uma tabela que contem uma frase do texto usamos LIKE.
+	Porém, devemos lembrar que o LIKE torna muito lenta a busca. 
+	Se quisermos achar a palavra ao final LIKE "%palavra" o porcento diz que ignore tudo q vem antes
+	Se quisermos achar no inicio LIKE "palavra$" o porcento diz que ignore tudo q vim depois da palavra
+	E se quisermos achar alguma palavra no meio de uma frase, LIKE "%palavra%" ele irá ignorar o que vem antes e depois.
+	
+	podemos usar tbm os operandos logicos and e or, para fazer uma filtragem.
+	where nome = "maria" and idade > 30; irá buscar uma pessoa que tenha nome maria E tambem idade maior que 30. as duas devem ser satisfeitas
+	where nome = "maria" and idade > 30; irá buscar uma pessoa que tenha nome maria OU que tenha idade maior que 30. pelo menos uma deve ser satisfeita
+	
+	Contando e agrupando - Para contagem usamos a clausula COUNT(*), 
+	ex se quisermos saber quantas instancias temos de uma tabela, select count(*) from nome_tabela;
+	se quisermos agrupar, select idade count(*) as idades from pessoa group by idade; aqui estamos dizendo, selecione idade da tabela pessoa e agrupe
+	numa nova tabela de nome idades por idade.
+
+	Ao trabalhar com NULL e quisermos fazer uma filtragem, não podemos usar o comparador =, devemos perguntar se o campo é nulo. 
+	ex - select name from pessoa where idade is null; selenione a campo nome onde o campo idade é nulo. 
+	select name from pessoa where idade is not null; selecione o campo nome onde o campo idade não é nulo.
+seção 4:
+	Atualizar e Deletar registros da tabela. UPDATE e DELETE, lembrar"!-> Só usar esses comandos com clausulas WHERE, pois pode acarretar em perda de dados total.
+	para atualizar - update pessoa set email where nome = "nome";
+	DELETE - 
+
+seção 5:
+	
+
+
+
+
+
+
+
+
+
+
+
